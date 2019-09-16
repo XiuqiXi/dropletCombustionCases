@@ -1,0 +1,77 @@
+#!/bin/sh
+#------------------------------------------------------------------------------
+# =========                 |
+# \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+#  \\    /   O peration     | Website:  https://openfoam.org
+#   \\  /    A nd           | Copyright (C) 2011-2018 OpenFOAM Foundation
+#    \\/     M anipulation  |
+#------------------------------------------------------------------------------
+# License
+#     This file is part of OpenFOAM.
+#
+#     OpenFOAM is free software: you can redistribute it and/or modify it
+#     under the terms of the GNU General Public License as published by
+#     the Free Software Foundation, either version 3 of the License, or
+#     (at your option) any later version.
+#
+#     OpenFOAM is distributed in the hope that it will be useful, but WITHOUT
+#     ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+#     FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+#     for more details.
+#
+#     You should have received a copy of the GNU General Public License
+#     along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
+#
+# Script
+#     Allrun
+#
+# Description
+#
+#------------------------------------------------------------------------------
+cd ${0%/*} || exit 1    # Run from this directory
+
+if [ ! -f "Coefficient" ];then
+echo "File does not exsit"
+else
+rm -rf Coefficient
+fi
+
+if [ ! -f "assimilationData" ];then
+echo "File does not exsit"
+else
+rm -rf assimilationData
+fi
+
+if [ ! -f "DropletProperties" ];then
+echo "File does not exsit"
+else
+rm -rf DropletProperties
+fi
+
+if [ ! -f "HeatFlux" ];then
+echo "File does not exsit"
+else
+rm -rf HeatFlux
+fi
+
+if [ ! -f "InjectionVelocity" ];then
+echo "File does not exsit"
+else
+rm -rf InjectionVelocity
+fi
+
+if [ ! -f "MassFlux" ];then
+echo "File does not exsit"
+else
+rm -rf MassFlux
+fi
+
+if [ ! -f "./postProcessing/fieldMinMax1/0/fieldMinMax.dat" ];then
+echo "File does not exsit"
+else
+rm -rf ./postProcessing/fieldMinMax1/0/fieldMinMax.dat
+fi
+
+DatarhoReactingFoam > log 2>&1 &
+
+#------------------------------------------------------------------------------

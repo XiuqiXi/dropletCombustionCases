@@ -1,0 +1,54 @@
+#!/bin/sh
+cd ${0%/*} || exit 1    # Run from this directory
+
+dir=${PWD##*/}
+
+echo "--------"
+echo "Cleaning ${dir}s ..."
+echo "Removing backup files"
+find . -type f \( -name "*~" -o -name "*.bak" \) -exec rm {} \;
+find . \( -name core -o -name 'core.[1-9]*' \) -exec rm {} \;
+find . \( -name '*.pvs' -o -name '*.OpenFOAM' \) -exec rm {} \;
+rm logs testLoopReport > /dev/null 2>&1
+
+foamCleanTutorials cases
+
+echo "--------"
+
+if [ ! -f "assimilationData" ];then
+echo "File does not exsit"
+else
+rm -rf assimilationData
+fi
+
+if [ ! -f "DropletProperties" ];then
+echo "File does not exsit"
+else
+rm -rf DropletProperties
+fi
+
+if [ ! -f "HeatFlux" ];then
+echo "File does not exsit"
+else
+rm -rf HeatFlux
+fi
+
+if [ ! -f "InjectionVelocity" ];then
+echo "File does not exsit"
+else
+rm -rf InjectionVelocity
+fi
+
+if [ ! -f "MassFlux" ];then
+echo "File does not exsit"
+else
+rm -rf MassFlux
+fi
+
+if [ ! -f "Coefficient" ];then
+echo "File does not exsit"
+else
+rm -rf Coefficient
+fi
+
+#------------------------------------------------------------------------------
