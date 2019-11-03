@@ -2,7 +2,7 @@
 
 This repository is the input files for DatarhoReactingFoam. 
 
-This is for decane case.
+This is for decane case. For the heptane case, please refer to main branch.
 
 The mesh is created by Gmesh and gmesh source file is `circleRegion.geo`
 
